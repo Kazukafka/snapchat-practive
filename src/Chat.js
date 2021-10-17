@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { db } from './firebase';
 import { useHistory } from 'react-router';
 //import ReactTimeago from 'react-time-ago';
-// import moment from 'moment';
+import moment from 'moment';
 
 function Chat({ id, username, timestamp, read, imageUrl, profilePic }) {
   //console.log(username)
@@ -27,6 +27,7 @@ function Chat({ id, username, timestamp, read, imageUrl, profilePic }) {
       history.push('/chats/view');
     }
   }
+
   return (
     < div onClick={open} className="chat" >
       <Avatar className="chat__avatar" src={profilePic} />
@@ -36,7 +37,7 @@ function Chat({ id, username, timestamp, read, imageUrl, profilePic }) {
         <p>
           {/* if文｛｝｛｝で書く */}
           {!read && "tap to view"}{" "}
-          {/* <span>{moment(timestamp).format('YYYY/MM/DD HH:mm')}</span> */}
+          {moment(timestamp).format('HH:mm')}
           {/* <ReactTimeago date={new Date(timestamp?.toDate()).toUTCString()} /> */}
         </p>
       </div>
