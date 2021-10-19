@@ -43,3 +43,10 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 # snapy
+
+<img width="476" alt="スクリーンショット 2021-10-19 22 39 22" src="https://user-images.githubusercontent.com/31508821/137921728-14c7803e-3c75-4a33-a4fa-f71ba7a35fc3.png">
+<img width="509" alt="スクリーンショット 2021-10-19 22 39 03" src="https://user-images.githubusercontent.com/31508821/137921752-b69b80a8-92b1-46cf-ab7c-19a73accf457.png">
+<img width="502" alt="スクリーンショット 2021-10-19 22 38 56" src="https://user-images.githubusercontent.com/31508821/137921762-6a53e17c-c60d-4418-99fa-8b1f6df45cc4.png">
+<img width="989" alt="スクリーンショット 2021-10-19 22 38 19" src="https://user-images.githubusercontent.com/31508821/137921772-6b3ea5cb-e0ca-46ec-9fa8-8f64ed020ec4.png">
+
+
