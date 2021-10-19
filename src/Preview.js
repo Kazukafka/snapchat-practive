@@ -16,12 +16,15 @@ import SendIcon from '@mui/icons-material/Send';
 import { v4 as uuid } from 'uuid';
 import { db, storage } from './firebase';
 import firebase from 'firebase';
+import { selectUser } from "./features/appSlice";
 
 function Preview() {
   const cameraImage = useSelector(selectCameraImage);
   const history = useHistory();
 
   const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     if (!cameraImage) {
@@ -52,12 +55,14 @@ function Preview() {
           .ref("posts")
           .child(id)
           .getDownloadURL()
-          .then((url) => {
+          .then((url, username) => {
             db.collection("posts").add({
               imageUrl: url,
-              username: "TEST",
+              //ProfilePic is enough for UI
+              username: null,
               read: false,
               //profile picture
+              profilePic: user.profilePic,
               timstamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
             history.replace("/chats");

@@ -3,11 +3,19 @@ import React, { useEffect, useState } from 'react';
 import './Chats.css';
 import SearchIcon from '@mui/icons-material/Search';
 import ChatBubble from '@mui/icons-material/ChatBubble';
-import { db } from "./firebase";
+import { auth, db } from "./firebase";
 import Chat from './Chat';
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser } from './features/appSlice';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import { useHistory } from "react-router-dom";
+import { resetCameraImage } from "./features/cameraSlice";
 
 function Chats() {
   const [posts, setPosts] = useState([]);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     //firebase grammaly has changed
@@ -32,10 +40,20 @@ function Chats() {
   }, []);
 
   //console.log(posts);
+
+  const takeSnap = () => {
+    dispatch(resetCameraImage());
+    history.push("/");
+  };
+
   return (
     <div className="chats">
       <div className="chats__header">
-        <Avatar className="chats__avatar" />
+        <Avatar
+          src={user.profilePic}
+          onClick={() => auth.signOut()}
+          className="chats__avatar"
+        />
         <div className="chats__search">
           <SearchIcon />
           <input placeholder="Friends" type="text" />
@@ -57,6 +75,11 @@ function Chats() {
         )
         )}
       </div>
+      <RadioButtonUncheckedIcon
+        className='chats__takePicIcon'
+        onClick={takeSnap}
+        fontSize='large'
+      />
     </div>
   );
 }
